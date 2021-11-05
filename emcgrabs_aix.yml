@@ -1,1 +1,56 @@
+- name: EMCGrabs
+  hosts: all
+  become: true
+  tasks:
+  
+  - name: Fetch file from remote host
+    run_once: yes
+    fetch:
+      src: /jc_migraciones/software/emcgrabs/emcgrab*
+      dest: /tmp/ flat=yes
+    when: "{{ inventory_hostname == 'repositorio' }}"
+  
+  - name: Copy file to remote host
+    copy: 
+      src: /tmp/emcgrab*
+      dest: /opt/emcgrab/
+    when: ""{{ inventory_hostname == 'nodo' }}"
+  
+  - name: Untar emcgrab
+    unarchive:
+      src: /opt/emcgrab*.tar
+      dest: /opt/emcgrab
+    when: ""{{ inventory_hostname == 'nodo' }}"
 
+   
+  - name: Exec emcgrab.sh
+    shell: "./emcgrab.sh -autoexec -legal"
+    when: ""{{ inventory_hostname == 'nodo' }}"
+
+  
+  - name: Fetch result .tar to ansible
+    fetch: 
+      src: /opt/emcgrab/outputs/*
+      dest: /tmp/outputs/
+    when: ""{{ inventory_hostname == 'nodo' }}"
+
+    
+  - name: Delete last output
+    file:
+      path: /opt/emcgrab/outputs/*
+      state: absent
+    when: ""{{ inventory_hostname == 'nodo' }}"
+
+    
+  - name: Copy output to repository
+    copy:
+      src: /tmp/outputs/*
+      dest:  /jc_migraciones/EMCGRAB_2021/
+    when: ""{{ inventory_hostname == 'repositorio' }}"
+
+    
+  - name: Delete output from ansible
+    file:
+      path: /tmp/outputs/*
+      state: absent
+    delegate_to: localhost
