@@ -1,0 +1,9 @@
+- name: Copy output to repository
+  copy:
+    src: /tmp/outputs/*
+    dest:  /jc_migraciones/EMCGRAB_2021/
+    
+- name: Delete output from ansible
+  file:
+    path: /tmp/outputs/*
+    state: absent
