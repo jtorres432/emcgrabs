@@ -1,0 +1,12 @@
+- name: Exec emcgrab.sh
+  shell: ./emcgrab.sh -autoexec -legal
+  
+- name: Copy result .tar to ansible
+  copy: 
+    src: /opt/emcgrab/outputs/*
+    dest: /tmp
+    
+- name: Delete last output
+  file:
+    src: /opt/emcgrab/outputs/*
+    state: absent
