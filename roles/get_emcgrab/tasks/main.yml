@@ -1,5 +1,5 @@
 - name: Fetch file from remote host
   run_once: yes
-  fetch: src=/jc_migraciones/software/emcgrabs/emcgrab* dest=buffer/ flat=yes
+  fetch: src=/jc_migraciones/software/emcgrabs/emcgrab* dest=/tmp/ flat=yes
   when: "{{ inventory_hostname == 'uxbck016' }}"
   
