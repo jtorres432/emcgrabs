@@ -1,10 +1,10 @@
 - name: Exec emcgrab.sh
   shell: "./emcgrab.sh -autoexec -legal"
   
-- name: Copy result .tar to ansible
-  copy: 
+- name: Fetch result .tar to ansible
+  fetch: 
     src: /opt/emcgrab/outputs/*
-    dest: /tmp
+    dest: /tmp/outputs/
     
 - name: Delete last output
   file:
