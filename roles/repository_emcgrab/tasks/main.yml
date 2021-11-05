@@ -7,3 +7,4 @@
   file:
     path: /tmp/outputs/*
     state: absent
+  delegate_to: localhost
