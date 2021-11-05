@@ -1,5 +1,7 @@
 - name: Copy file to remote host
-  copy: src=/tmp/emcgrab* dest=/opt/emcgrab/
+  copy: 
+    src: /tmp/emcgrab*
+    dest: /opt/emcgrab/
   when: ""{{ inventory_hostname == 'uxbck016' }}"
   
 - name: Untar emcgrab
