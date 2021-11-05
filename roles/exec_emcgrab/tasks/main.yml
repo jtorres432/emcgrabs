@@ -8,5 +8,5 @@
     
 - name: Delete last output
   file:
-    src: /opt/emcgrab/outputs/*
+    path: /opt/emcgrab/outputs/*
     state: absent
