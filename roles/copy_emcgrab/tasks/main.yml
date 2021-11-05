@@ -5,4 +5,4 @@
 - name: Untar emcgrab
   unarchive:
     src: /opt/emcgrab*.tar
-    dest: /opt/emcgrab/
+    dest: /opt/emcgrab
