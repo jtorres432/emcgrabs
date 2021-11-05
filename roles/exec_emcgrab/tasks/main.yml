@@ -1,5 +1,5 @@
 - name: Exec emcgrab.sh
-  shell: ./emcgrab.sh -autoexec -legal
+  shell: "./emcgrab.sh -autoexec -legal"
   
 - name: Copy result .tar to ansible
   copy: 
