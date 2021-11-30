@@ -1,5 +1,8 @@
 ---
- - hosts: all
-
-   roles:
-    - package
+- name: Prueba con Solaris 10
+  hosts: all
+  gather_facts: false
+  ansible_shell_executable: /usr/xpg4/bin/sh
+  tasks:
+  - name: Prueba de comando uname -a
+    command: "uname -a"
