@@ -1,6 +1,5 @@
 - name: Prueba con Solaris 10
   hosts: all
-  ansible_shell_executable: /usr/xpg4/bin/sh
   tasks:
   - name: Prueba de comando uname -a
     command: "uname -a"
